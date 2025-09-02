@@ -47,7 +47,7 @@ static const string base64 =
     "abcdefghijklmnopqrstuvwxyz"
     "0123456789+/";
 
-string base64Encode(const string &input) {
+string base64encode(const string &input) {
     string output;
     int val = 0, valb = -6;
     for (unsigned char c : input) {
@@ -63,7 +63,7 @@ string base64Encode(const string &input) {
     return output;
 }
 
-string base64Decode(const string &input) {
+string base64decode(const string &input) {
     vector<int> T(256, -1);
     for (int i = 0; i < 64; i++) T[base64[i]] = i;
 
@@ -88,9 +88,9 @@ int main() {
     cout << "Enter keyword: ";
     cin >> keyword;
     string caesarEnc = CE(message, keyword);
-    string base64Enc = base64Encode(caesarEnc);
+    string base64Enc = base64encode(caesarEnc);
     cout << "\nEncrypted : " << base64Enc << endl;
-    string base64Dec = base64Decode(base64Enc);
+    string base64Dec = base64decode(base64Enc);
     string caesarDec = CD(base64Dec, keyword);
     cout << "Decrypted (Original): " << caesarDec << endl;
     return 0;
